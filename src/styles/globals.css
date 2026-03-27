@@ -339,13 +339,13 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .prod-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 768px) {
   .nav-links { display: none; }
   .hamburger { display: flex; color: var(--tan); padding: 0; background: none; border: none; }
   .top-navbar { height: auto; flex-direction: column; align-items: stretch; padding-bottom: 0; }
-  .navbar-inner { height: 60px; padding: 0 16px; flex-wrap: nowrap; }
-  .nav-brand img { height: 32px; margin-left: auto; margin-right: auto; }
+  .navbar-inner { height: 60px; padding: 0 16px; flex-wrap: nowrap; gap: 8px; }
+  .nav-mobile-left, .nav-icons { flex-shrink: 0; }
+  .nav-brand { flex-shrink: 1; min-width: 0; display: flex; justify-content: center; align-items: center; }
+  .nav-brand img { height: 32px; max-width: 100%; object-fit: contain; margin-left: auto; margin-right: auto; }
   .nav-icons { margin-left: auto; justify-content: flex-end; }
   .hero { flex-direction: column; }
   .hero-right { order: -1; min-height: 50vh; }
