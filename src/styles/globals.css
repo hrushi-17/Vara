@@ -342,13 +342,29 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
 }
 @media (max-width: 768px) {
   .nav-links { display: none; }
-  .hamburger { display: flex; }
+  .hamburger { display: flex; color: var(--tan); padding: 0; background: none; border: none; }
+  .top-navbar { height: auto; flex-direction: column; align-items: stretch; padding-bottom: 0; }
+  .navbar-inner { height: 60px; padding: 0 16px; flex-wrap: nowrap; }
+  .nav-brand img { height: 32px; margin-left: auto; margin-right: auto; }
+  .nav-icons { margin-left: auto; justify-content: flex-end; }
   .hero { flex-direction: column; }
   .hero-right { order: -1; min-height: 50vh; }
   .hero-left { padding: 48px 24px; }
   .hero-h1 { font-size: 42px; }
   .philosophy-inner { flex-direction: column; padding: 0 24px; }
-  .cat-grid { grid-template-columns: 1fr; }
+  
+  /* Horizontal scroll for Categories on mobile */
+  .cat-grid { 
+    display: flex; 
+    overflow-x: auto; 
+    gap: 16px; 
+    padding-bottom: 24px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .cat-grid::-webkit-scrollbar { display: none; }
+  .cat-card { min-width: 260px; scroll-snap-align: center; }
+
   .testi-grid { grid-template-columns: 1fr; }
   .insta-grid { grid-template-columns: repeat(3, 1fr); }
   .pillars { grid-template-columns: 1fr; }
@@ -358,7 +374,6 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
   .section-h2 { font-size: 36px; }
   .corp-h2 { font-size: 36px; }
   .container { padding: 0 20px; }
-  .navbar-inner { padding: 0 20px; }
   .cart-drawer { width: 100%; }
   .craft-inner { flex-direction: column; padding: 0; }
   .craft-text { padding: 32px 24px; }
@@ -366,8 +381,20 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
   .modal-right { padding: 24px; }
 }
 @media (max-width: 480px) {
-  .prod-grid { grid-template-columns: 1fr; }
+  /* 2 items per row on mobile to match Flipkart */
+  .prod-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .prod-name { font-size: 14px; }
+  .prod-body { padding: 12px 0 0; }
+  .prod-price { font-size: 13px; }
+  .prod-img-wrap { height: 210px; }
+  
   .footer-inner { grid-template-columns: 1fr; }
   .insta-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-btns { flex-direction: column; }
 }
+
+/* Offcanvas custom styling */
+.mobile-offcanvas { background-color: var(--olive) !important; color: white !important; }
+.mobile-offcanvas .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+.nav-menu-links { font-family: 'Cormorant Garamond', serif; font-size: 28px; letter-spacing: 2px; }
+.nav-menu-link:hover { color: var(--tan) !important; }
