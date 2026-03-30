@@ -96,11 +96,11 @@ export default function Navbar({ onCartOpen, onAuthOpen, navigate }) {
             </div>
             
             {/* Mobile User Icon */}
-            <div className="mobile-user-icon align-items-center ms-auto me-3" onClick={user ? () => navigate({ name: 'profile' }) : onAuthOpen} style={{ cursor: 'pointer' }}>
+            <div className="mobile-user-icon align-items-center" onClick={user ? () => navigate({ name: 'profile' }) : onAuthOpen} style={{ cursor: 'pointer' }}>
                <User size={22} color="var(--tan)" />
             </div>
 
-            <div className="cart-wrapper ms-md-3" onClick={onCartOpen} style={{ cursor: 'pointer' }}>
+            <div className="cart-wrapper" onClick={onCartOpen} style={{ cursor: 'pointer' }}>
               <ShoppingBag size={22} color="var(--tan)" />
               {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
             </div>
