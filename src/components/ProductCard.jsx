@@ -45,6 +45,9 @@ export default function ProductCard({ product, navigate, onAddedToCart, onRequir
   };
 
   const discount = Math.round((1 - product.price / product.oldPrice) * 100);
+  
+  // Create a realistic mock rating between 4.1 and 4.8 based on the product ID
+  const rating = (4.1 + (product.id % 8) * 0.1).toFixed(1);
 
   return (
     <div className="prod-card reveal">
@@ -88,7 +91,16 @@ export default function ProductCard({ product, navigate, onAddedToCart, onRequir
             -{discount}%
           </span>
         </div>
-        <div className="prod-stars">★★★★★<span>({product.stars})</span></div>
+        
+        {/* Flipkart-Level Rating Badge */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '10px' }}>
+          <span style={{ backgroundColor: '#388E3C', color: 'white', fontSize: '11px', fontWeight: '600', padding: '2px 6px', borderRadius: '3px', display: 'flex', alignItems: 'center', gap: '3px', fontFamily: 'Inter, sans-serif' }}>
+            {rating} <span style={{ fontSize: '10px' }}>★</span>
+          </span>
+          <span style={{ fontSize: '12px', color: '#878787', fontWeight: '500', fontFamily: 'Inter, sans-serif' }}>
+            ({product.stars.toLocaleString('en-IN')})
+          </span>
+        </div>
 
         <div className="qty-row">
           <span className="qty-label">Qty:</span>
