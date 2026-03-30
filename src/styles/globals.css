@@ -336,10 +336,23 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
 .auth-toggle:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.15); color: var(--rust); }
 .auth-error { color: #d32f2f; font-size: 12px; margin-top: -12px; }
 
+/* NAVBAR RESPONSIVE UTILITIES */
+.nav-mobile-left { display: none; }
+.mobile-user-icon { display: none; }
+.nav-search-mobile { display: none; }
+.desktop-only { display: flex; }
+
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .prod-grid { grid-template-columns: repeat(2, 1fr); }
+  
+  /* Navbar Overrides */
   .nav-links { display: none; }
+  .desktop-only { display: none !important; }
+  .nav-mobile-left { display: block; }
+  .mobile-user-icon { display: flex !important; }
+  .nav-search-mobile { display: block; }
+  
   .hamburger { display: flex; color: var(--tan); padding: 0; background: none; border: none; }
   .top-navbar { height: auto; flex-direction: column; align-items: stretch; padding-bottom: 0; }
   .navbar-inner { height: 60px; padding: 0 16px; flex-wrap: nowrap; gap: 8px; }

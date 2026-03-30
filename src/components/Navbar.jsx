@@ -50,7 +50,7 @@ export default function Navbar({ onCartOpen, onAuthOpen, navigate }) {
     <>
       <nav className={`navbar top-navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="navbar-inner">
-          <div className="nav-mobile-left d-md-none me-2">
+          <div className="nav-mobile-left me-2">
             <button className="hamburger" onClick={() => setMenuOpen(true)}>
               <Menu size={24} />
             </button>
@@ -69,7 +69,7 @@ export default function Navbar({ onCartOpen, onAuthOpen, navigate }) {
           <div className="nav-icons" style={{ display: 'flex', alignItems: 'center' }}>
             
             {/* Desktop Search */}
-            <form onSubmit={handleSearchSubmit} className="nav-search-form d-none d-md-flex" style={{ alignItems: 'center', background: 'white', border: '1px solid var(--sand)', borderRadius: 20, padding: '6px 16px', transition: 'box-shadow 0.3s' }}>
+            <form onSubmit={handleSearchSubmit} className="nav-search-form desktop-only" style={{ alignItems: 'center', background: 'white', border: '1px solid var(--sand)', borderRadius: 20, padding: '6px 16px', transition: 'box-shadow 0.3s' }}>
               <input 
                 type="text" 
                 placeholder="Search products..." 
@@ -80,7 +80,7 @@ export default function Navbar({ onCartOpen, onAuthOpen, navigate }) {
               <button type="submit" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', padding: 0 }}><Search size={16} color="var(--sage)" /></button>
             </form>
 
-            <div className="nav-user-desktop d-none d-md-flex ms-3">
+            <div className="nav-user-desktop desktop-only ms-3">
               {user ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '13px' }}>
                   <span onClick={() => navigate({ name: 'profile' })} style={{ display: 'flex', alignItems: 'center', gap: 4, fontWeight: 500, cursor: 'pointer', transition: 'color 0.3s' }} onMouseEnter={e => e.target.style.color='var(--tan)'} onMouseLeave={e => e.target.style.color='inherit'}>
@@ -96,7 +96,7 @@ export default function Navbar({ onCartOpen, onAuthOpen, navigate }) {
             </div>
             
             {/* Mobile User Icon */}
-            <div className="d-flex d-md-none align-items-center ms-auto me-3" onClick={user ? () => navigate({ name: 'profile' }) : onAuthOpen} style={{ cursor: 'pointer' }}>
+            <div className="mobile-user-icon align-items-center ms-auto me-3" onClick={user ? () => navigate({ name: 'profile' }) : onAuthOpen} style={{ cursor: 'pointer' }}>
                <User size={22} color="var(--tan)" />
             </div>
 
@@ -108,7 +108,7 @@ export default function Navbar({ onCartOpen, onAuthOpen, navigate }) {
         </div>
         
         {/* Mobile Full-Width Search Bar */}
-        <div className="nav-search-mobile d-md-none w-100 px-3 pb-2 pt-1">
+        <div className="nav-search-mobile w-100 px-3 pb-2 pt-1">
           <form onSubmit={handleSearchSubmit} className="w-100 d-flex" style={{ background: 'white', border: '1px solid var(--sand)', borderRadius: 24, padding: '8px 16px' }}>
             <input 
               type="text" 
