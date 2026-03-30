@@ -340,26 +340,33 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
 .nav-mobile-left { display: none; }
 .mobile-user-icon { display: none; }
 .nav-search-mobile { display: none; }
-.desktop-only { display: flex; }
+.desktop-search { display: flex; }
+.nav-user-desktop { display: flex; }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
+/* TABLET AND DOWN (< 992px) */
+@media (max-width: 991px) {
   .prod-grid { grid-template-columns: repeat(2, 1fr); }
   
   /* Navbar Overrides */
   .nav-links { display: none; }
-  .desktop-only { display: none !important; }
+  .nav-user-desktop { display: none !important; }
   .nav-mobile-left { display: block; }
   .mobile-user-icon { display: flex !important; }
-  .nav-search-mobile { display: block; }
   
   .hamburger { display: flex; color: var(--tan); padding: 0; background: none; border: none; }
   .top-navbar { height: auto; flex-direction: column; align-items: stretch; padding-bottom: 0; }
   .navbar-inner { height: 60px; padding: 0 16px; flex-wrap: nowrap; gap: 8px; }
   .nav-mobile-left, .nav-icons { flex-shrink: 0; }
-  .nav-brand { flex-shrink: 1; min-width: 0; display: flex; justify-content: center; align-items: center; }
-  .nav-brand img { height: 32px; max-width: 100%; object-fit: contain; margin-left: auto; margin-right: auto; }
-  .nav-icons { margin-left: auto; justify-content: flex-end; }
+  
+  /* Align Logo left to fit Search Bar cleanly alongside on Tablets */
+  .nav-brand { flex-shrink: 1; min-width: 0; display: flex; justify-content: flex-start; align-items: center; margin-right: auto; }
+  .nav-brand img { height: 32px; max-width: 100%; object-fit: contain; margin-left: 0; margin-right: 0; }
+  
+  /* Let the icons wrapper take up remaining space with search bar stretching inside */
+  .nav-icons { margin-left: 0; justify-content: flex-end; width: auto; flex-grow: 1; }
+  .desktop-search { width: 100%; max-width: 380px; margin-right: auto; }
+  .desktop-search input { width: 100% !important; }
+
   .hero { flex-direction: column; }
   .hero-right { order: -1; min-height: 50vh; }
   .hero-left { padding: 48px 24px; }
@@ -393,6 +400,14 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
   .craft-text { padding: 32px 24px; }
   .modal-box { flex-direction: column; max-height: 95vh; }
   .modal-right { padding: 24px; }
+}
+@media (max-width: 575px) {
+  /* Mobile Phone specific Navbar overrides */
+  .desktop-search { display: none !important; }
+  .nav-search-mobile { display: block; }
+  .nav-brand { justify-content: center; margin-right: 0; margin-left: -20px; }
+  .nav-brand img { margin-left: auto; margin-right: auto; }
+  .nav-icons { flex-grow: 0; margin-left: auto; justify-content: flex-end; }
 }
 @media (max-width: 480px) {
   /* 2 items per row on mobile to match Flipkart */
