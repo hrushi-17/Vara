@@ -4,6 +4,7 @@ import { WHATSAPP_NUMBER } from '../data/products';
 
 export default function WhatsAppRedirectModal({ isOpen, onClose, message }) {
   const [copied, setCopied] = useState(false);
+  const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
   useEffect(() => {
     if (isOpen && message) {
@@ -71,7 +72,10 @@ export default function WhatsAppRedirectModal({ isOpen, onClose, message }) {
 
         {/* Info */}
         <p style={{ fontSize: '11px', color: '#666', lineHeight: 1.4, margin: '0 0 12px' }}>
-          We have copied your order summary to your clipboard. Since you are on desktop, you can send it via WhatsApp Web or the app.
+          {isMobile 
+            ? "We have copied your order summary. Tap the button below to open WhatsApp and send your order."
+            : "We have copied your order summary to your clipboard. Since you are on desktop, you can send it via WhatsApp Web or the app."
+          }
         </p>
 
         {/* Message preview area (smaller, more compact) */}
@@ -99,44 +103,66 @@ export default function WhatsAppRedirectModal({ isOpen, onClose, message }) {
             {copied ? 'Copied to Clipboard!' : 'Copy Summary'}
           </button>
 
-          {/* Web WhatsApp */}
-          <a
-            href={whatsappWebUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={onClose}
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-              background: 'var(--olive)', color: '#FBFBF9', textDecoration: 'none',
-              padding: '10px', borderRadius: 6, fontSize: '12px', fontWeight: 700,
-              textAlign: 'center', transition: 'background 0.2s', fontFamily: 'Inter, sans-serif',
-              boxShadow: '0 2px 6px rgba(56,80,53,0.15)'
-            }}
-            onMouseEnter={e => e.currentTarget.style.background = '#2C3E29'}
-            onMouseLeave={e => e.currentTarget.style.background = 'var(--olive)'}
-          >
-            <ExternalLink size={14} />
-            Open WhatsApp Web
-          </a>
+          {isMobile ? (
+            /* Mobile Link: Uses wa.me which intercepts cleanly on iOS/Android to open native app */
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onClose}
+              style={{
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                background: '#25D366', color: 'white', textDecoration: 'none',
+                padding: '12px', borderRadius: 6, fontSize: '13px', fontWeight: 700,
+                textAlign: 'center', transition: 'background 0.2s', fontFamily: 'Inter, sans-serif',
+                boxShadow: '0 4px 12px rgba(37, 211, 102, 0.2)'
+              }}
+            >
+              <MessageSquare size={15} />
+              Open WhatsApp App
+            </a>
+          ) : (
+            <>
+              {/* Desktop Option 1: Web WhatsApp */}
+              <a
+                href={`https://web.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(message)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                  background: 'var(--olive)', color: '#FBFBF9', textDecoration: 'none',
+                  padding: '10px', borderRadius: 6, fontSize: '12px', fontWeight: 700,
+                  textAlign: 'center', transition: 'background 0.2s', fontFamily: 'Inter, sans-serif',
+                  boxShadow: '0 2px 6px rgba(56,80,53,0.15)'
+                }}
+                onMouseEnter={e => e.currentTarget.style.background = '#2C3E29'}
+                onMouseLeave={e => e.currentTarget.style.background = 'var(--olive)'}
+              >
+                <ExternalLink size={14} />
+                Open WhatsApp Web
+              </a>
 
-          {/* App WhatsApp */}
-          <a
-            href={whatsappAppUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={onClose}
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-              background: '#FBFBF9', color: 'var(--olive)', textDecoration: 'none',
-              border: '1px solid var(--olive)',
-              padding: '10px', borderRadius: 6, fontSize: '12px', fontWeight: 600,
-              textAlign: 'center', transition: 'all 0.2s', fontFamily: 'Inter, sans-serif'
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#EAE4D7'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#FBFBF9'; }}
-          >
-            Open in WhatsApp App
-          </a>
+              {/* Desktop Option 2: wa.me prompts Desktop Application launch */}
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={onClose}
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                  background: '#FBFBF9', color: 'var(--olive)', textDecoration: 'none',
+                  border: '1px solid var(--olive)',
+                  padding: '10px', borderRadius: 6, fontSize: '12px', fontWeight: 600,
+                  textAlign: 'center', transition: 'all 0.2s', fontFamily: 'Inter, sans-serif'
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#EAE4D7'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#FBFBF9'; }}
+              >
+                Open in WhatsApp App
+              </a>
+            </>
+          )}
         </div>
 
         {/* Footer info */}
