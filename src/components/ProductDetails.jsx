@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { PRODUCTS } from '../data/products';
 import { openWhatsApp, buyNowMessage } from '../utils/whatsapp';
 import { saveOrder } from '../utils/orders';
+import { getDefaultAddress } from '../utils/addresses';
 
 export default function ProductDetails({ productId, navigate, onAddedToCart, onRequireAuth }) {
   const [selectedImg, setSelectedImg] = useState(0);
@@ -36,23 +37,24 @@ export default function ProductDetails({ productId, navigate, onAddedToCart, onR
       onRequireAuth();
       return;
     }
-    saveOrder(user.email, { name: product.name, qty, oldPrice: product.oldPrice, price: product.price, image: product.images[0] }, product.price * qty);
-    openWhatsApp(buyNowMessage(product, qty, user));
+    const address = getDefaultAddress(user.email);
+    saveOrder(user.email, { name: product.name, qty, oldPrice: product.oldPrice, price: product.price, image: product.images[0] }, product.price * qty, address);
+    openWhatsApp(buyNowMessage(product, qty, user, address));
   };
 
   const discount = Math.round((1 - product.price / product.oldPrice) * 100);
 
   return (
-    <div className="page-container" style={{ padding: '120px 0 60px' }}>
+    <div className="page-container product-details-container">
       <div className="container">
         
         <button onClick={() => navigate({ name: 'products' })} style={{ background: 'none', border: 'none', color: 'var(--rust)', cursor: 'pointer', marginBottom: 24, fontSize: 14 }}>
           ← Back to Catalog
         </button>
 
-        <div className="modal-content" style={{ display: 'flex', flexDirection: 'row', gap: '40px', background: 'white', padding: 32, borderRadius: 8, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
-          <div className="modal-left" style={{ flex: '1', display: 'flex', gap: '16px' }}>
-            <div className="modal-thumbs" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div className="modal-content">
+          <div className="modal-left">
+            <div className="modal-thumbs">
               {product.images.map((img, i) => (
                 <img 
                   key={i} 
@@ -64,13 +66,13 @@ export default function ProductDetails({ productId, navigate, onAddedToCart, onR
                 />
               ))}
             </div>
-            <div className="modal-main-img" style={{ flex: 1 }}>
+            <div className="modal-main-img">
               <img src={product.images[selectedImg]} alt={product.name} style={{ width: '100%', height: 'auto', maxHeight: '500px', objectFit: 'cover', borderRadius: 4 }} />
             </div>
           </div>
 
-          <div className="modal-right" style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
-            <div className="prod-badge" style={{ alignSelf: 'flex-start', marginBottom: 12 }}>{product.badge}</div>
+          <div className="modal-right">
+            <div className="prod-badge" style={{ position: 'static', alignSelf: 'flex-start', marginBottom: 12 }}>{product.badge}</div>
             <h2 className="modal-title" style={{ fontSize: 32, fontFamily: 'Cormorant Garamond, serif', color: 'var(--olive)', marginBottom: 8 }}>{product.name}</h2>
             <div className="modal-type" style={{ color: 'var(--rust)', fontSize: 14, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 16 }}>{product.type}</div>
             
@@ -100,7 +102,7 @@ export default function ProductDetails({ productId, navigate, onAddedToCart, onR
               </div>
             </div>
 
-            <div className="modal-actions" style={{ display: 'flex', gap: 16, marginTop: 'auto' }}>
+            <div className="modal-actions">
               <button className="btn-cart" onClick={handleAddToCart} style={{ flex: 1, padding: '14px', background: 'white', border: '1px solid var(--olive)', color: 'var(--olive)', fontWeight: 600, cursor: 'pointer', transition: '0.3s' }}>
                 Add to Cart
               </button>

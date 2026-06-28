@@ -58,9 +58,10 @@ export default function Navbar({ onCartOpen, onAuthOpen, navigate }) {
               </li>
             ))}
           </ul>
-          <div className="nav-icons" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div className="nav-icons">
             
-            <form onSubmit={handleSearchSubmit} className="nav-search-form" style={{ display: 'flex', alignItems: 'center', background: 'white', border: '1px solid var(--sand)', borderRadius: 20, padding: '6px 16px', transition: 'box-shadow 0.3s' }}>
+            {/* Desktop Search Bar */}
+            <form onSubmit={handleSearchSubmit} className="nav-search-form search-desktop" style={{ display: 'flex', alignItems: 'center', background: 'white', border: '1px solid var(--sand)', borderRadius: 20, padding: '6px 16px', transition: 'box-shadow 0.3s' }}>
               <input 
                 type="text" 
                 placeholder="Search products..." 
@@ -71,18 +72,26 @@ export default function Navbar({ onCartOpen, onAuthOpen, navigate }) {
               <button type="submit" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', padding: 0 }}><Search size={16} color="var(--sage)" /></button>
             </form>
 
-            {user ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '13px' }}>
-                <span onClick={() => navigate({ name: 'profile' })} style={{ display: 'flex', alignItems: 'center', gap: 4, fontWeight: 500, cursor: 'pointer', transition: 'color 0.3s' }} onMouseEnter={e => e.target.style.color='var(--tan)'} onMouseLeave={e => e.target.style.color='inherit'}>
-                  <User size={16} /> Hi, {user.name}
-                </span>
-                <button onClick={logout} style={{ background: 'transparent', color: 'var(--rust)', border: '1px solid var(--rust)', padding: '4px 12px', borderRadius: 20, cursor: 'pointer', fontSize: 11, fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase', transition: 'all 0.3s' }} onMouseEnter={e => { e.target.style.background = 'var(--rust)'; e.target.style.color = 'white'; }} onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = 'var(--rust)'; }}>Logout</button>
-              </div>
-            ) : (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', cursor: 'pointer', fontWeight: 500 }} onClick={onAuthOpen}>
-                <User size={18} /> Login
-              </div>
-            )}
+            {/* Desktop User Panel */}
+            <div className="nav-user-desktop">
+              {user ? (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '13px' }}>
+                  <span onClick={() => navigate({ name: 'profile' })} style={{ display: 'flex', alignItems: 'center', gap: 4, fontWeight: 500, cursor: 'pointer', transition: 'color 0.3s' }} onMouseEnter={e => e.target.style.color='var(--tan)'} onMouseLeave={e => e.target.style.color='inherit'}>
+                    <User size={16} /> Hi, {user.name}
+                  </span>
+                  <button onClick={logout} style={{ background: 'transparent', color: 'var(--rust)', border: '1px solid var(--rust)', padding: '4px 12px', borderRadius: 20, cursor: 'pointer', fontSize: 11, fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase', transition: 'all 0.3s' }} onMouseEnter={e => { e.target.style.background = 'var(--rust)'; e.target.style.color = 'white'; }} onMouseLeave={e => { e.target.style.background = 'transparent'; e.target.style.color = 'var(--rust)'; }}>Logout</button>
+                </div>
+              ) : (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', cursor: 'pointer', fontWeight: 500 }} onClick={onAuthOpen}>
+                  <User size={18} /> Login
+                </div>
+              )}
+            </div>
+
+            {/* Mobile User Icon */}
+            <div className="nav-user-mobile" onClick={user ? () => navigate({ name: 'profile' }) : onAuthOpen} style={{ cursor: 'pointer' }}>
+              <User size={20} />
+            </div>
             
             <div className="cart-wrapper" onClick={onCartOpen} style={{ cursor: 'pointer' }}>
               <ShoppingBag size={20} />
@@ -91,6 +100,20 @@ export default function Navbar({ onCartOpen, onAuthOpen, navigate }) {
             <button className="hamburger" onClick={() => setMenuOpen(true)}>
               <Menu size={24} />
             </button>
+          </div>
+          
+          {/* Mobile Search Bar (wraps below top row) */}
+          <div className="search-mobile">
+            <form onSubmit={handleSearchSubmit} className="nav-search-form" style={{ display: 'flex', alignItems: 'center', background: 'white', border: '1px solid var(--sand)', borderRadius: 20, padding: '6px 16px', transition: 'box-shadow 0.3s', width: '100%' }}>
+              <input 
+                type="text" 
+                placeholder="Search products..." 
+                value={search} 
+                onChange={e => setSearch(e.target.value)} 
+                style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: 13, width: '100%', fontFamily: 'Inter, sans-serif' }}
+              />
+              <button type="submit" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', padding: 0 }}><Search size={16} color="var(--sage)" /></button>
+            </form>
           </div>
         </div>
       </nav>

@@ -24,6 +24,7 @@ import AuthModal from './components/AuthModal';
 import AllProducts from './components/AllProducts';
 import ProductDetails from './components/ProductDetails';
 import Profile from './components/Profile';
+import WhatsAppRedirectModal from './components/WhatsAppRedirectModal';
 
 // Scroll reveal hook
 function useScrollReveal() {
@@ -64,11 +65,20 @@ export default function App() {
   const [cartOpen, setCartOpen] = useState(false);
   const [authOpen, setAuthOpen] = useState(false);
   const [toast, setToast] = useState(null);
+  const [whatsAppRedirect, setWhatsAppRedirect] = useState({ isOpen: false, message: '' });
   
   // Router state
   const [view, setView] = useState({ name: 'home' }); // { name: 'home' | 'products' | 'product', id?: string, query?: string }
 
   useScrollReveal();
+
+  useEffect(() => {
+    const handleTrigger = (e) => {
+      setWhatsAppRedirect({ isOpen: true, message: e.detail.message });
+    };
+    window.addEventListener('trigger-whatsapp-modal', handleTrigger);
+    return () => window.removeEventListener('trigger-whatsapp-modal', handleTrigger);
+  }, []);
 
   useEffect(() => {
     const t1 = setTimeout(() => setLoaderDone(true), 1800);
@@ -137,6 +147,11 @@ export default function App() {
         {cartOpen && <CartDrawer onClose={() => setCartOpen(false)} onRequireAuth={() => { setCartOpen(false); setAuthOpen(true); }} />}
         <AuthModal isOpen={authOpen} onClose={() => setAuthOpen(false)} />
         {toast && <Toast message={toast} onDone={() => setToast(null)} />}
+        <WhatsAppRedirectModal
+          isOpen={whatsAppRedirect.isOpen}
+          onClose={() => setWhatsAppRedirect({ isOpen: false, message: '' })}
+          message={whatsAppRedirect.message}
+        />
       </CartProvider>
     </AuthProvider>
   );

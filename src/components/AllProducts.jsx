@@ -13,7 +13,7 @@ export default function AllProducts({ searchQuery, navigate, onAddedToCart, onRe
   }
 
   return (
-    <div className="page-container" style={{ padding: '120px 0 60px' }}>
+    <div className="page-container all-products-container">
       <div className="container">
         <div className="section-header">
           <h1 className="section-h2">{searchQuery ? `Search Results for "${searchQuery}"` : 'All Collections'}</h1>

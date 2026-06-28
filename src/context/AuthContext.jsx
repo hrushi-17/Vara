@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { deleteUserOrders } from '../utils/orders';
+import { deleteUserAddresses } from '../utils/addresses';
 
 const AuthContext = createContext(null);
 
@@ -73,9 +75,16 @@ export function AuthProvider({ children }) {
 
   const deleteAccount = () => {
     if (!user) return;
+    // 1. Remove user from the users DB (they cannot log in again)
     let db = getUsersDB();
     db = db.filter(u => u.email !== user.email);
     setUsersDB(db);
+    // 2. Permanently delete ALL order history tied to this email
+    //    Corporate standard: re-registering with same email shows zero orders
+    deleteUserOrders(user.email);
+    // 3. Permanently delete ALL saved addresses
+    deleteUserAddresses(user.email);
+    // 4. Clear the active session
     logout();
   };
 

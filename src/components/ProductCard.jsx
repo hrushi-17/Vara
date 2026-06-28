@@ -3,6 +3,7 @@ import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { openWhatsApp, buyNowMessage } from '../utils/whatsapp';
 import { saveOrder } from '../utils/orders';
+import { getDefaultAddress } from '../utils/addresses';
 
 // WhatsApp SVG inline
 const WAIcon = () => (
@@ -30,8 +31,9 @@ export default function ProductCard({ product, navigate, onAddedToCart, onRequir
       onRequireAuth();
       return;
     }
-    saveOrder(user.email, { name: product.name, qty, oldPrice: product.oldPrice, price: product.price, image: product.images[0] }, product.price * qty);
-    openWhatsApp(buyNowMessage(product, qty, user));
+    const address = getDefaultAddress(user.email);
+    saveOrder(user.email, { name: product.name, qty, oldPrice: product.oldPrice, price: product.price, image: product.images[0] }, product.price * qty, address);
+    openWhatsApp(buyNowMessage(product, qty, user, address));
   };
 
   const nextImg = (e) => {
