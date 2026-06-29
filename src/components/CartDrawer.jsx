@@ -1,4 +1,4 @@
-import { X, MapPin, Check, Plus, Edit2 } from 'lucide-react';
+﻿import { X, MapPin, Check, Plus, Edit2 } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -192,7 +192,7 @@ export default function CartDrawer({ onClose, onRequireAuth }) {
       <div className="cart-drawer">
         <div className="cart-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span className="cart-title">Your Bag</span>
+            <span className="cart-title">Your Cart</span>
             {totalItems > 0 && (
               <span className="cart-count-badge">{totalItems} item{totalItems > 1 ? 's' : ''}</span>
             )}
@@ -209,7 +209,7 @@ export default function CartDrawer({ onClose, onRequireAuth }) {
           {cart.length === 0 ? (
             <div className="cart-empty">
               <div className="cart-empty-icon">🛍️</div>
-              <div className="cart-empty-text">Your bag is empty</div>
+              <div className="cart-empty-text">Your cart is empty</div>
               <p style={{ fontSize: 13, color: '#828D76', textAlign: 'center' }}>
                 Add some beautiful leather goods to get started.
               </p>
@@ -538,7 +538,7 @@ export default function CartDrawer({ onClose, onRequireAuth }) {
               <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.116 1.535 5.845L0 24l6.338-1.509A11.933 11.933 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.896 0-3.672-.494-5.215-1.36l-.375-.215-3.9.929.975-3.785-.24-.39A9.744 9.744 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/>
             </svg>
             {cart.length === 0
-              ? 'Your bag is empty'
+              ? 'Your cart is empty'
               : !user
               ? 'Login to Checkout'
               : !selectedAddr
@@ -576,7 +576,7 @@ export default function CartDrawer({ onClose, onRequireAuth }) {
             </h3>
 
             <p style={{ fontSize: 13, color: '#666', lineHeight: 1.5, margin: '0 0 16px 0' }}>
-              Please transfer the total amount to the Vara Shop Admin below, then click the button to send your WhatsApp order confirmation.
+              Please transfer the total amount to the Varavee Shop Admin below, then click the button to send your WhatsApp order confirmation.
             </p>
 
             <div style={{ background: 'white', padding: 16, borderRadius: 8, border: '1px solid #E3DAC9', marginBottom: 16, textAlign: 'center' }}>
@@ -588,10 +588,10 @@ export default function CartDrawer({ onClose, onRequireAuth }) {
               <div>
                 <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--sage)', textTransform: 'uppercase', letterSpacing: 0.5, marginBottom: 4 }}>UPI Payment Address</div>
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center', background: '#faf8f5', padding: '8px 12px', borderRadius: 6, border: '1px solid #eae4d7' }}>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--dark)', flex: 1, fontFamily: 'monospace' }}>pay.vara@okaxis</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--dark)', flex: 1, fontFamily: 'monospace' }}>pay.varavee@okaxis</span>
                   <button 
                     onClick={() => {
-                      navigator.clipboard.writeText('pay.vara@okaxis');
+                      navigator.clipboard.writeText('pay.varavee@okaxis');
                       alert('UPI ID copied!');
                     }}
                     style={{ background: 'var(--olive)', color: 'white', border: 'none', padding: '4px 8px', borderRadius: 4, fontSize: 10, fontWeight: 600, cursor: 'pointer' }}
@@ -607,7 +607,7 @@ export default function CartDrawer({ onClose, onRequireAuth }) {
                   <div><strong>Bank:</strong> ICICI Bank</div>
                   <div><strong>Account Number:</strong> 1204 9876 5432</div>
                   <div><strong>IFSC Code:</strong> ICIC0001204</div>
-                  <div><strong>Account Holder Name:</strong> Vara Leather Store</div>
+                  <div><strong>Account Holder Name:</strong> Varavee Leather Store</div>
                 </div>
               </div>
             </div>

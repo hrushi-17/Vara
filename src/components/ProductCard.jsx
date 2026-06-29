@@ -26,14 +26,8 @@ export default function ProductCard({ product, navigate, onAddedToCart, onRequir
   };
 
   const handleBuyNow = (e) => {
-    e.stopPropagation();
-    if (!user) {
-      onRequireAuth();
-      return;
-    }
-    const address = getDefaultAddress(user.email);
-    saveOrder(user.email, { name: product.name, qty, oldPrice: product.oldPrice, price: product.price, image: product.images[0] }, product.price * qty, address);
-    openWhatsApp(buyNowMessage(product, qty, user, address));
+    // Adding to cart triggers the Cart Drawer, which enforces the address/checkout flow
+    handleAddToCart(e);
   };
 
   const nextImg = (e) => {

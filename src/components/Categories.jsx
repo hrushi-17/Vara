@@ -3,28 +3,36 @@ import { useRef, useEffect, useState, useCallback } from 'react';
 
 const CATS = [
   {
-    name: 'Laptop Bags',
-    count: '12 Styles',
-    bg: '#D5CBB0',
-    textColor: '#1C1C1C',
-    img: '/images/LB1/1.4.jpg',
-    filter: 'laptop',
-  },
-  {
-    name: 'Backpacks',
-    count: '8 Styles',
+    name: 'Premium Men',
+    count: '45 Styles',
     bg: '#385035',
     textColor: '#FDF6E3',
-    img: '/images/LB2/2.4.jpg',
-    filter: 'backpacks',
+    img: '/images/products/premium/AAFYKL-M001/AAFYKL-M001_1.jpg',
+    filter: 'premium-men',
   },
   {
-    name: 'Travel Bags',
-    count: '6 Styles',
+    name: 'Premium Women',
+    count: '39 Styles',
     bg: '#B27138',
     textColor: '#FDF6E3',
-    img: '/images/LB4/4.5.jpeg',
-    filter: 'travel',
+    img: '/images/products/premium/AAFYKL-W002/AAFYKL-W002_1.jpg',
+    filter: 'premium-women',
+  },
+  {
+    name: 'Basic Men',
+    count: '15 Styles',
+    bg: '#D5CBB0',
+    textColor: '#1C1C1C',
+    img: '/images/products/basic-men/ETSY-M-001/LLHNMP-M200_1.jpg',
+    filter: 'basic-men',
+  },
+  {
+    name: 'Basic Women',
+    count: '13 Styles',
+    bg: '#6E8B7E',
+    textColor: '#FDF6E3',
+    img: '/images/products/basic-women/ETSY-W-002/NNHNMP-W300_1.jpg',
+    filter: 'basic-women',
   },
 ];
 

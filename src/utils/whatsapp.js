@@ -1,4 +1,4 @@
-import { WHATSAPP_NUMBER } from '../data/products';
+﻿import { WHATSAPP_NUMBER } from '../data/products';
 import { getDefaultAddress } from './addresses';
 
 export function openWhatsApp(message) {
@@ -14,7 +14,7 @@ export function buyNowMessage(product, qty, user, address) {
     ? `\n*Delivery Address:*\n${user.name}\n${address.line1}\n${address.city}, ${address.state} - ${address.pincode}\n*Phone:* ${user.phone}\n`
     : '';
 
-  return `Hello Vara! 🛍️${userDetails}${addrBlock}
+  return `Hello Varavee! 🛍️${userDetails}${addrBlock}
 I'd like to order:
 • *${product.name}* (${product.type})
   Qty: ${qty} × ₹${product.price.toLocaleString('en-IN')} = *₹${total}*
@@ -36,7 +36,7 @@ export function cartCheckoutMessage(items, user, address, paymentDetails) {
     ? `\n*Payment Method:* ${paymentDetails}\n`
     : '';
 
-  return `Hello Vara! 🛍️${userDetails}${addrBlock}${payBlock}
+  return `Hello Varavee! 🛍️${userDetails}${addrBlock}${payBlock}
 I'd like to place an order:
 
 ${lines}
@@ -47,9 +47,9 @@ Please confirm my order and share payment/delivery details. Thank you!`;
 }
 
 export function corporateQuoteMessage() {
-  return `Hello Vara! 🏢
+  return `Hello Varavee! 🏢
 
-I'm interested in a *Corporate/Bulk Order* for leather bags.
+I'm interested in a *Corporate/Bulk Order* for leather footwear.
 
 Could you please share:
 • Volume discount details
@@ -61,7 +61,7 @@ Looking forward to hearing from you!`;
 }
 
 export function contactFormMessage({ name, email, phone, subject, message }) {
-  return `Hello Vara! 📩
+  return `Hello Varavee! 📩
 
 *Name:* ${name}
 *Email:* ${email}
@@ -82,7 +82,7 @@ export function cancelOrderMessage(order, user) {
     ? `\n*Delivery Address:*\n${user.name}\n${address.line1}\n${address.city}, ${address.state} - ${address.pincode}\n*Phone:* ${user.phone}\n`
     : '';
 
-  return `Hello Vara! 🚨
+  return `Hello Varavee! 🚨
 I'd like to *CANCEL* my order. 
 
 *Order Details:*

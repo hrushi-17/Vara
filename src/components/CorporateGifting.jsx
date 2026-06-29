@@ -9,7 +9,7 @@ export default function CorporateGifting() {
       <p className="corp-body reveal delay-1">
         Bulk orders for corporates, weddings & special occasions.
         Custom engraving, branded packaging, and volume discounts available.
-        Minimum 10 bags for corporate pricing.
+        Minimum 10 pairs for corporate pricing.
       </p>
       <div className="corp-btns reveal delay-2">
         <button

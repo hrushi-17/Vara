@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 
 const Eye = () => (
@@ -54,7 +54,7 @@ export default function AuthModal({ isOpen, onClose }) {
           <h2 className="auth-title">{isLogin ? 'Login' : 'Looks like you\'re new here!'}</h2>
           <p className="auth-sub">{isLogin ? 'Get access to your Orders, Wishlist and Recommendations' : 'Sign up with your details to get started'}</p>
           <div style={{ marginTop: 'auto', textAlign: 'center' }}>
-            <img src="/images/LB1/1.5.jpg" alt="Vara Login" className="auth-img" />
+            <img src="/images/LB1/1.5.jpg" alt="Varavee Login" className="auth-img" />
           </div>
         </div>
 
@@ -91,14 +91,14 @@ export default function AuthModal({ isOpen, onClose }) {
 
             {error && <div className="auth-error">{error}</div>}
             
-            {isLogin && <p className="auth-terms">By continuing, you agree to Vara's Terms of Use and Privacy Policy.</p>}
+            {isLogin && <p className="auth-terms">By continuing, you agree to Varavee's Terms of Use and Privacy Policy.</p>}
             
             <button type="submit" className="auth-submit">
               {isLogin ? 'Login' : 'Continue'}
             </button>
             
             <button type="button" className="auth-toggle" onClick={() => { setIsLogin(!isLogin); setError(''); }}>
-              {isLogin ? 'New to Vara? Create an account' : 'Existing User? Log in'}
+              {isLogin ? 'New to Varavee? Create an account' : 'Existing User? Log in'}
             </button>
           </form>
         </div>

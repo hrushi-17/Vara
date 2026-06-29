@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 
 function useCountUp(target, isVisible) {
   const [count, setCount] = useState(0);
@@ -45,16 +45,16 @@ export default function Philosophy() {
           <span className="eyebrow">Our Philosophy</span>
           <h2 className="section-h2">Well Made. Honest. Built to Last.</h2>
           <p className="section-body">
-            We believe a great bag isn't just an accessory — it's a companion. At Vara, every piece is
-            handcrafted by skilled artisans in India using full-grain leather, solid brass hardware, and
-            a saddle-stitch technique built to outlast trends. We don't believe in fast fashion.
+            We believe a great pair of footwear isn't just an accessory — it's a companion. At Varavee, every piece is
+            handcrafted by skilled artisans in India using full-grain leather, manual leather chord stitching, and
+            anti-slip soles built to outlast trends. We don't believe in fast fashion.
             We believe in slow craft.
           </p>
           <div className="ruled-line" />
         </div>
         <div className="philosophy-right reveal delay-2">
           <StatCard target={14} suffix="+" label="Years of Craft" isVisible={vis} />
-          <StatCard target={50000} suffix="+" label="Bags Delivered" isVisible={vis} />
+          <StatCard target={50000} suffix="+" label="Pairs Delivered" isVisible={vis} />
         </div>
       </div>
     </section>

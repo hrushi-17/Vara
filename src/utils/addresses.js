@@ -1,4 +1,4 @@
-// ─── Address Management ───────────────────────────────────
+﻿// ─── Address Management ───────────────────────────────────
 const KEY = 'vara_addresses_db';
 
 function getAll() {

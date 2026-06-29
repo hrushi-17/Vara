@@ -1,23 +1,23 @@
-export default function Craftsmanship() {
+﻿export default function Craftsmanship() {
   return (
     <section id="craftsmanship" className="craft">
       <div className="craft-inner">
         <div className="craft-img reveal-left">
-          <img src="/images/LB5/5.2.jpg" alt="Craftsman at work — Vara leather artisan" />
+          <img src="/images/products/premium/AAFYKL-M001/AAFYKL-M001_3.jpg" alt="Craftsman at work — Varavee leather artisan" />
         </div>
         <div className="craft-text reveal-right">
           <span className="eyebrow">The Craft</span>
           <h2 className="craft-h2">Every Stitch Tells a Story</h2>
           <p className="craft-body">
             Our artisans have spent decades perfecting the balance between form and function.
-            From pattern cutting to final finishing, every bag passes through 47 quality
+            From pattern cutting to final finishing, every piece passes through quality
             checkpoints before it reaches your hands.
           </p>
           <div>
             {[
               { icon: '⬡', title: 'Saddle Stitch', sub: 'Hand-stitched for 3× durability' },
               { icon: '⬡', title: 'Vegetable Tanned', sub: 'Natural leather that ages beautifully' },
-              { icon: '⬡', title: 'Brass Hardware', sub: 'Solid brass fittings, not zinc alloy' },
+              { icon: '⬡', title: 'Anti-slip Sole', sub: 'Full TPR or Aerosole bottom for superior grip' },
             ].map(r => (
               <div className="craft-row" key={r.title}>
                 <span className="craft-icon">{r.icon}</span>

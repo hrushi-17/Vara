@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 
 export default function Hero() {
   const [visible, setVisible] = useState(false);
@@ -20,10 +20,10 @@ export default function Hero() {
       <div className={`hero-left reveal-left${visible ? ' reveal-visible' : ''}`}>
         <span className="hero-eyebrow">Handcrafted Since 2010</span>
         <h1 className="hero-h1">
-          Bags Built<br />to Last a <span className="accent">Lifetime</span>
+          Footwear Built<br />to Last a <span className="accent">Lifetime</span>
         </h1>
         <p className="hero-body">
-          We design leather bags that are made to be used — every day, not just occasionally.
+          We design premium leather Kolhapuri chappals that are made to be worn — every day, not just occasionally.
           Genuine leather. Honest craft. Built for India.
         </p>
         <div className="hero-btns">
@@ -32,12 +32,12 @@ export default function Hero() {
         </div>
         <div className="hero-trust">
           <span>✓ Genuine Leather</span>
-          <span>✓ Lifetime Stitching</span>
+          <span>✓ Premium Comfort</span>
           <span>✓ Made in India</span>
         </div>
       </div>
       <div className={`hero-right reveal-right${visible ? ' reveal-visible' : ''}`}>
-        <img src="/images/LB1/1.1.webp" alt="Vara Leather Bag — Executive Laptop Bag in Brown" />
+        <img src="/images/products/premium/AAFYKL-M001/AAFYKL-M001_1.jpg" alt="Varavee Leather Footwear — Premium Kolhapuri Shoe in Brown" />
       </div>
     </section>
   );

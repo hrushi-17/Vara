@@ -49,7 +49,7 @@ export default function Navbar({ onCartOpen, onAuthOpen, navigate }) {
       <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
         <div className="navbar-inner">
           <div className="nav-brand" onClick={() => navigate({ name: 'home' })} style={{ cursor: 'pointer' }}>
-            <img src="/images/logo/logo.png" alt="Vara Logo" />
+            <img src="/images/logo/logo.jpg" alt="Varavee Logo" />
           </div>
           <ul className="nav-links">
             {LINKS.map(l => (

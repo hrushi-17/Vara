@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { ShieldCheck, LogOut, Package, RefreshCw, XCircle, CheckCircle, AlertTriangle } from 'lucide-react';
 import { cancelUserOrder, updateOrderStatus } from '../utils/orders';
 
@@ -105,7 +105,7 @@ export default function AdminDashboard({ navigate }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--olive)', color: 'white', padding: '16px 24px', borderRadius: '4px', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
           <div>
             <h1 style={{ fontSize: 20, margin: 0, fontWeight: 700, display: 'flex', alignItems: 'center', gap: 10 }}>
-              <ShieldCheck size={24} /> Vara Operations Dashboard
+              <ShieldCheck size={24} /> Varavee Operations Dashboard
             </h1>
             <p style={{ fontSize: 12, opacity: 0.8, margin: '4px 0 0' }}>Security Access Level: Admin Controller</p>
           </div>

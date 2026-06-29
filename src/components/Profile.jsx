@@ -1,4 +1,4 @@
-import { useAuth } from '../context/AuthContext';
+﻿import { useAuth } from '../context/AuthContext';
 import { useState, useEffect } from 'react';
 import { User, LogOut, ShieldAlert, ChevronRight, Package, CreditCard, Lock, MapPin, Plus, Pencil, Trash2, CheckCircle } from 'lucide-react';
 import { getUserOrders, cancelUserOrder, updateOrderStatus } from '../utils/orders';
@@ -464,7 +464,7 @@ export default function Profile({ navigate }) {
             <ShieldAlert size={24} color="#d32f2f" />
             <h2 style={{ fontSize: 20, fontFamily: 'Cormorant Garamond, serif', fontWeight: 700, color: '#d32f2f', margin: 0 }}>Confirm Account Deletion</h2>
           </div>
-          <p style={{ fontSize: 14, color: '#444', lineHeight: 1.7, marginBottom: 8 }}>You are about to <strong>permanently delete</strong> your Vara account.</p>
+          <p style={{ fontSize: 14, color: '#444', lineHeight: 1.7, marginBottom: 8 }}>You are about to <strong>permanently delete</strong> your Varavee account.</p>
           <ul style={{ fontSize: 13, color: '#666', lineHeight: 2, marginBottom: 24, paddingLeft: 20 }}>
             <li>✗ &nbsp;Your <strong>profile</strong> and personal information will be erased</li>
             <li>✗ &nbsp;Your entire <strong>order history</strong> will be permanently deleted</li>
@@ -487,7 +487,7 @@ export default function Profile({ navigate }) {
             <ShieldAlert size={22} /> Danger Zone
           </h2>
           <p style={{ fontSize: 14, color: '#666', marginBottom: 8, lineHeight: 1.6, maxWidth: 650 }}>
-            Deleting your account will <strong>permanently remove</strong> your personal information, <strong>entire order history</strong>, and saved addresses from Vara.
+            Deleting your account will <strong>permanently remove</strong> your personal information, <strong>entire order history</strong>, and saved addresses from Varavee.
           </p>
           <p style={{ fontSize: 13, color: '#999', marginBottom: 28, lineHeight: 1.6 }}>
             If you re-register with the same email or mobile number, you will start as a completely new user with no order history.

@@ -25,7 +25,7 @@ export default function Contact() {
               or want to discuss a bulk order — we're here.
             </p>
             {[
-              { icon: '📍', label: 'Address', val: 'Pune, Maharashtra, India' },
+              { icon: '📍', label: 'Address', val: 'Kolhapur, Maharashtra, India' },
               {
                 icon: '📞', label: 'Phone',
                 val: <a href={`tel:+${WHATSAPP_NUMBER}`}>+91 88570 94510</a>,
@@ -34,7 +34,7 @@ export default function Contact() {
                 icon: '💬', label: 'WhatsApp',
                 val: <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noreferrer">+91 88570 94510</a>,
               },
-              { icon: '✉', label: 'Email', val: <a href="mailto:Vara.indiaofficial@gmail.com">Vara.indiaofficial@gmail.com</a> },
+              { icon: '✉', label: 'Email', val: <a href="mailto:Varavee.indiaofficial@gmail.com">Varavee.indiaofficial@gmail.com</a> },
               { icon: '🕐', label: 'Hours', val: 'Mon–Sat, 10am – 7pm IST' },
             ].map(c => (
               <div className="contact-item" key={c.label}>

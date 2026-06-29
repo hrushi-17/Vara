@@ -1,5 +1,5 @@
 const TESTIS = [
-  { quote: '"This laptop bag has been with me for 3 years. Not a single stitch out of place."', name: 'Arjun M.', loc: 'Pune', init: 'AM' },
+  { quote: '"These Kolhapuris have been with me for 3 years. Not a single stitch out of place."', name: 'Arjun M.', loc: 'Pune', init: 'AM' },
   { quote: '"Bought as a corporate gift for 20 employees. Everyone was impressed with quality."', name: 'Priya S.', loc: 'Bangalore', init: 'PS' },
   { quote: '"The leather has aged so beautifully. Looks even better than when I bought it."', name: 'Rahul K.', loc: 'Delhi', init: 'RK' },
 ];

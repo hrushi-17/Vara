@@ -112,7 +112,7 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
 
 /* CATEGORIES */
 .categories { background: var(--cream); padding: 100px 0; }
-.cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .cat-card { height: 460px; border-radius: 2px; overflow: hidden; cursor: pointer; position: relative; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s; }
 .cat-card:hover { transform: scale(1.03); box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
 .cat-img { height: 65%; overflow: hidden; position: relative; }
@@ -327,6 +327,96 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
 .pillar-desc { font-size: 14px; color: var(--sage); line-height: 1.7; }
 .about-img { height: 500px; background: var(--sand); border-radius: 2px; overflow: hidden; }
 .about-img img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ABOUT SLIDESHOW */
+.about-slideshow {
+  position: relative;
+  width: 100%;
+  /* Desktop/Laptop: taller rectangle to show full model */
+  aspect-ratio: 3 / 2;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: background 0.8s ease;
+  box-shadow: 0 24px 64px rgba(56, 80, 53, 0.20);
+}
+.about-slide-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* cover + bottom so feet/sandals are always in frame */
+  object-fit: cover;
+  object-position: center bottom;
+  transform: scale(1.04);
+  opacity: 0;
+  transition: opacity 1.3s ease-in-out, transform 1.3s ease-in-out;
+}
+.about-slide-img.active {
+  opacity: 1;
+  transform: scale(1);
+}
+.about-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(30,20,10,0.40) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 2;
+}
+.about-slide-label {
+  position: absolute;
+  bottom: 52px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.80);
+  z-index: 3;
+  pointer-events: none;
+  font-family: 'Inter', sans-serif;
+}
+.about-slide-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 4;
+}
+.about-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+  background: rgba(255,255,255,0.45);
+  cursor: pointer;
+  transition: width 0.4s ease, background 0.4s ease;
+  padding: 0;
+}
+.about-dot.active {
+  width: 28px;
+  background: var(--tan);
+}
+
+/* Laptop/Tablet landscape: taller to show more model */
+@media (max-width: 1280px) {
+  .about-slideshow { aspect-ratio: 1 / 1; border-radius: 8px; }
+}
+/* Tablet portrait */
+@media (max-width: 1024px) {
+  .about-slideshow { aspect-ratio: 1 / 1; border-radius: 8px; }
+}
+/* Mobile: 1:1 square */
+@media (max-width: 768px) {
+  .about-slideshow { aspect-ratio: 1 / 1; border-radius: 6px; }
+  .about-slide-label { font-size: 10px; letter-spacing: 1.5px; bottom: 44px; }
+  .about-dot.active { width: 20px; }
+}
+@media (max-width: 480px) {
+  .about-slideshow { aspect-ratio: 1 / 1; border-radius: 4px; }
+}
 
 /* CORPORATE */
 .corporate { background: linear-gradient(135deg, #385035 0%, #1C2B1A 100%); padding: 80px 40px; text-align: center; position: relative; overflow: hidden; }
@@ -635,7 +725,7 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
   .philosophy-inner { flex-direction: column; padding: 0 20px; gap: 40px; }
   .cat-grid { grid-template-columns: 1fr; }
   .testi-grid { grid-template-columns: 1fr; }
-  .insta-grid { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .insta-grid { grid-template-columns: repeat(5, 1fr); gap: 4px; }
   .insta-cell { aspect-ratio: 1 / 1; }
   .pillars { grid-template-columns: 1fr; }
   .contact-inner { flex-direction: column; gap: 40px; }
@@ -682,13 +772,14 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
 
   /* 2-Column Product Grid on Mobile */
   .prod-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 12px !important;
   }
   .prod-card {
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-width: 0;
   }
   .prod-img-wrap {
     height: auto !important;
@@ -706,7 +797,7 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
   }
   .prod-price-row {
     gap: 4px !important;
-    margin-bottom: 2px !important;
+    margin-bottom: 4px !important;
     flex-wrap: wrap;
   }
   .prod-price {
@@ -723,13 +814,16 @@ body { font-family: 'Inter', sans-serif; color: #1C1C1C; background: #FDF6E3; ov
     display: none !important; /* Hide quantity inside grid cards on mobile */
   }
   .card-actions {
-    gap: 4px !important;
+    gap: 6px !important;
     margin-top: auto;
+    flex-direction: column !important; /* Stack buttons vertically to fit narrow screens */
   }
   .btn-cart, .btn-buy {
-    padding: 8px 2px !important;
-    font-size: 9px !important;
+    width: 100% !important;
+    padding: 8px 4px !important;
+    font-size: 10px !important;
     letter-spacing: 0.5px !important;
+    text-align: center;
   }
   .carousel-btn {
     opacity: 1 !important; /* Always show carousel arrows on mobile */

@@ -1,4 +1,4 @@
-// ─── Local Mock Database for Order History ───────────────
+﻿// ─── Local Mock Database for Order History ───────────────
 export function saveOrder(userEmail, items, totalAmount, address) {
   try {
     const ordersItem = localStorage.getItem('vara_orders_db');
