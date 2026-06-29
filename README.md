@@ -16,7 +16,7 @@
   </p>
   
   <p align="center">
-    <strong>🌍 Live Deployment: <a href="https://varavee.vercel.app">https://varavee.vercel.app</a></strong>
+    <strong>🌍 Live Deployment: <a href="https://varavee-internationals.vercel.app/">https://varavee-internationals.vercel.app/</a></strong>
   </p>
 </div>
 
