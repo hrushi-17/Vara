@@ -9,10 +9,14 @@
 <br />
 
 <div align="center">
-  <h1 align="center">👜 Vara - Premium Leather Goods E-Commerce</h1>
+  <h1 align="center">👞 Varavee - Premium Artisanal Footwear</h1>
   
   <p align="center">
-    <strong>A high-performance, modular React application providing a pristine, premium user experience for luxury leather goods. Inspired by modern minimalist architectures and top-tier e-commerce platforms.</strong>
+    <strong>A high-performance, modular React application providing a pristine, premium user experience for artisanal handcrafted Kolhapuri footwear. Inspired by modern minimalist architectures and top-tier e-commerce platforms.</strong>
+  </p>
+  
+  <p align="center">
+    <strong>🌍 Live Deployment: <a href="https://varavee.vercel.app">https://varavee.vercel.app</a></strong>
   </p>
 </div>
 
@@ -46,7 +50,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/hrushi-17/Vara.git
+   git clone https://github.com/hrushi-17/Varavee.git
    ```
 
 2. **Navigate to the directory**
@@ -101,10 +105,10 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 <br />
 
 ## 🤝 Contributing
-Contributions, issues, and feature requests are highly welcome! Feel free to check the [issues page](https://github.com/hrushi-17/Vara/issues) if you want to contribute.
+Contributions, issues, and feature requests are highly welcome! Feel free to check the [issues page](https://github.com/hrushi-17/Varavee/issues) if you want to contribute.
 
 <hr />
 
 <div align="center">
-  <sub>Built with ❤️ by Hrushi. Seamlessly deployed on Vercel.</sub>
+  <sub>Designed & Developed by Hrushikesh Chothe. Seamlessly deployed on Vercel.</sub>
 </div>
